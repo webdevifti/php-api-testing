@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container-fluid{
+    padding: 0px;
+}
+
+.sidebar{
+    background-color: #000;
+    height: 100%;
+    z-index: 999;
+
+}
+.sidebar a{
+    display: block;
+    color: #ddd;
+    padding: 10px;
+}
+.sidebar a:hover{
+    background-color: #333;
+}
+a:hover{
+    text-decoration: none;
+}
