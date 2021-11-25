@@ -1,4 +1,8 @@
-<?php 
+<?php
+session_start();
+if(!isset($_SESSION['LOGGED_IN'])){
+  header('location: login.php');
+}
 require './db.php';
 require './functions.php';
 ?>
@@ -17,7 +21,12 @@ require './functions.php';
 <div class="container-fluid header-container">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Start Tech Product Manager</a>
-
+    <?php if(isset($_SESSION['LOGGED_IN'])){
+      ?>
+      <span><?php echo $_SESSION['LOGGED_IN']; ?></span>
+      <a href="logout.php">Logout</a>
+      <?php 
+    } ?>
   </div>
 </nav>
 </div>

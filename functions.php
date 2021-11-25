@@ -111,3 +111,26 @@ function getSpecialFeatures(){
     return $data;
 }
 
+
+
+function adminLogin($request){
+    global $con;
+    $username = $request['username'];
+    $password = $request['password'];
+
+    $verify_password = password_verify($password, md5($password));
+    $sql = "SELECT `username`,`email`,`password` FROM `users` WHERE `username` =  '$username' OR `email` = '$username' AND `password` = '$verify_password'";
+
+    $query = mysqli_query($con, $sql);
+    if(mysqli_num_rows($query) > 0){
+        if($query){
+            session_start();
+            $_SESSION['LOGGED_IN'] = $username;
+            header('location: index.php');
+        }
+    }else{
+        header('location: login.php');
+    }
+
+    
+}
